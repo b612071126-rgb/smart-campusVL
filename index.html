@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#061728" />
+  <title>商丘工学院 · AI未来概念校园</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main id="stage" aria-label="智慧化未来校园三维场景"></main>
+  <div class="screen-grain"></div>
+  <div class="edge-shade"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-symbol"><i></i><i></i><i></i></span>
+      <span class="brand-name">SQIST <b>·</b> FUTURE CAMPUS</span>
+    </div>
+    <div class="live"><span class="live-dot"></span> SMART CAMPUS DIGITAL TWIN <span class="year">/ 2045</span></div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow"><span>01</span> AI · EDUCATION · ARCHITECTURE</div>
+    <h1>智慧校园<br><em>未来已来</em></h1>
+    <p class="lead">让建筑连接数据，让教育连接未来。</p >
+    <div class="hero-rule"><span></span><span></span></div>
+    <div class="feature-list">
+      <div class="feature"><span class="feature-icon">AI</span><div><b>AI 智慧教学</b><small>个性化学习 · 智能助教</small></div></div>
+      <div class="feature"><span class="feature-icon">⌘</span><div><b>校园数字孪生</b><small>实时感知 · 一体化管理</small></div></div>
+      <div class="feature"><span class="feature-icon">⌬</span><div><b>智慧校园服务</b><small>空间互联 · 高效协同</small></div></div>
+      <div class="feature"><span class="feature-icon">♧</span><div><b>绿色低碳校园</b><small>垂直绿化 · 能源优化</small></div></div>
+    </div>
+  </section>
+
+  <div class="scene-tag tag-one"><span class="tag-line"></span><div><b>AI LEARNING HUB</b><small>智慧教学中心</small></div></div>
+  <div class="scene-tag tag-two"><span class="tag-line"></span><div><b>DIGITAL TWIN</b><small>校园数字孪生平台</small></div></div>
+  <div class="scene-tag tag-three"><span class="tag-line"></span><div><b>GREEN ENERGY</b><small>绿色智慧基础设施</small></div></div>
+
+  <div class="stats">
+    <div><strong>AI+</strong><small>INTELLIGENT EDUCATION</small></div>
+    <div><strong>24<span> / 7</span></strong><small>CONNECTED CAMPUS</small></div>
+    <div><strong>NET <span>ZERO</span></strong><small>GREEN INFRASTRUCTURE</small></div>
+  </div>
+
+  <section class="particle-signature" aria-label="粒子署名">
+    <div class="signature-kicker"><span class="live-dot"></span> CONCEPT BY · CLASS 01</div>
+    <canvas id="particleText" width="960" height="310"></canvas>
+    <div class="signature-foot"><span>商丘工学院</span><i></i><span>智建 1 班 · 鲁文轩</span></div>
+  </section>
+
+  <section class="smart-console" aria-label="智慧校园交互控制台">
+    <div class="console-head"><span class="live-dot"></span><div><b>校园智能感知系统</b><small>点击模块，观察数据粒子响应</small></div></div>
+    <div class="console-buttons">
+      <button class="mode-button active" data-mode="ai"><span>01</span><b>AI 教学</b><small>学习数据流</small></button>
+      <button class="mode-button" data-mode="traffic"><span>02</span><b>智慧交通</b><small>路径调度</small></button>
+      <button class="mode-button" data-mode="energy"><span>03</span><b>能源网络</b><small>能耗优化</small></button>
+    </div>
+    <div class="console-output"><span class="output-pulse"></span><div><b id="systemState">正在连接 AI 教学中心</b><small id="systemDetail">粒子流已接入 · 等待交互指令</small></div></div>
+  </section>
+  <div class="interaction-hint"><span class="mouse-icon">↗</span> 点击智能模块触发粒子响应 <i></i> 拖动旋转 · 滚轮缩放</div>
+  <div class="render-status" id="renderStatus"><span class="live-dot"></span> INITIALIZING 3D CAMPUS</div>
+  <div id="fatalError" class="fatal-error" hidden></div>
+  <script type="module" src="./src/particle-title.js"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
