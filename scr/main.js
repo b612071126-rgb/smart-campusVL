@@ -264,23 +264,72 @@ function startCampus(THREE) {
     }
     return g;
   }
-  for(let i=0;i<58;i++){
-    const a=Math.random()*Math.PI*2, r=14+Math.random()*10;
-    // keep trees away from central tower and the stadium.
-    const x=Math.cos(a)*r,z=Math.sin(a)*r;
-    if(Math.hypot(x,z)<7) continue;
-    if(x < -10 && z < -4 && z > -15) continue;
-    if(Math.abs(x)<6 && Math.abs(z)>10) continue;
-    makeTree(x,z,.65+Math.random()*.55);
+ // Small trees & biophilic campus landscaping.
+function makeTree(x, z, s = 1) {
+  const g = new THREE.Group();
+  g.position.set(x, 0, z);
+  g.scale.setScalar(s);
+  campus.add(g);
+
+  cylinder(g, 0, 0.48, 0, 0.09, 0.16, 0.96, mat('#6f8a7f', 0.05, 0.8), 7);
+
+  const greens = [materials.green1, materials.green2, materials.green3];
+
+  for (let j = 0; j < 3; j++) {
+    const cone = new THREE.Mesh(
+      new THREE.ConeGeometry(0.48 - j * 0.09, 0.8, 7),
+      greens[j]
+    );
+
+    cone.position.y = 0.92 + j * 0.36;
+    g.add(cone);
   }
-  // Garden terraces around base, planters and luminous paths.
-  for(let i=0;i<16;i++){
-    const a=i*Math.PI/8, r=7.2;
-    const x=Math.cos(a)*r,z=Math.sin(a)*r;
-    const planter=box(campus,x,.15,z,1.25,.35,.75,material
-const plant=new THREE.Mesh(new THREE.IcosahedronGeometry(.55,1),[materials.green1,materials.green2,materials.green3][i%3]);
-    plant.position.set(x,.6,z);plant.scale.set(1.1,.65,.85);campus.add(plant);
-  }
+
+  return g;
+}
+
+// Generate campus trees.
+for (let i = 0; i < 58; i++) {
+  const a = Math.random() * Math.PI * 2;
+  const r = 14 + Math.random() * 10;
+
+  const x = Math.cos(a) * r;
+  const z = Math.sin(a) * r;
+
+  // Keep trees away from the central tower and stadium.
+  if (Math.hypot(x, z) < 7) continue;
+  if (x < -10 && z < -4 && z > -15) continue;
+  if (Math.abs(x) < 6 && Math.abs(z) > 10) continue;
+
+  makeTree(x, z, 0.65 + Math.random() * 0.55);
+}
+
+// Garden terraces around the tower.
+for (let i = 0; i < 16; i++) {
+  const a = i * Math.PI / 8;
+  const r = 7.2;
+
+  const x = Math.cos(a) * r;
+  const z = Math.sin(a) * r;
+
+  // Raised planter.
+  box(
+    campus,
+    x, 0.15, z,
+    1.25, 0.35, 0.75,
+    materials.edge
+  );
+
+  // Decorative plant.
+  const plant = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(0.55, 1),
+    [materials.green1, materials.green2, materials.green3][i % 3]
+  );
+
+  plant.position.set(x, 0.6, z);
+  plant.scale.set(1.1, 0.65, 0.85);
+  campus.add(plant);
+}
 
   // Water / reflection pool with bridge strips, on the right side of the campus.
   const pool=new THREE.Mesh(new THREE.BoxGeometry(8,.12,3.8),new THREE.MeshPhysicalMaterial({color:'#1b819d',metalness:.4,roughness:.12,transparent:true,opacity:.82,clearcoat:1}));
